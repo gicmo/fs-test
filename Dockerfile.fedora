@@ -1,0 +1,10 @@
+FROM fedora:latest
+
+RUN dnf --enablerepo=updates-testing -y update && \
+    dnf --enablerepo=updates-testing -y install gcc util-linux
+
+RUN mkdir /code
+ADD empty-dir.c /code
+ADD test.sh /code
+WORKDIR /code
+CMD ["/code/test.sh"]
