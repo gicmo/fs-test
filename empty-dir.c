@@ -18,7 +18,6 @@ main(int argc, char const *argv[])
   DIR *d;
   int r;
   int fd;
-  long pos;
   int count = 0;
 
   if (argc != 2)
@@ -35,8 +34,6 @@ main(int argc, char const *argv[])
 
   d = opendir(dir_path);
   assert(d != NULL);
-
-  pos = telldir(d);
 
   fd = openat(dirfd(d), "a", O_WRONLY|O_CREAT|O_TRUNC|O_CLOEXEC, 0666);
   assert(fd > 0);
